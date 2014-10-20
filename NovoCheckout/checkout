@@ -25,7 +25,7 @@ Etapas do checkout
 	5. order_review
 
 
-Estrutura de pastas do módulo
+Estrutura de pastas do módulo:
 
 	app/
 	|
@@ -54,4 +54,42 @@ Estrutura de pastas do módulo
 						`--Type/
 
 
+Estrutura de pastas do design:
 
+app/
+|
+`--design/
+    |
+    `--frontend/
+    	|
+    	`--base/
+        	|
+        	`--default/
+        		|
+        		`--DevXIII/
+        			|
+        			`--onestepcheckout/
+        			|	|
+        			|	`--payment/
+					|	|
+        			|	`--review/
+        			|	|
+        			|	`--shipping_method/
+
+Estrutura de pastas para o javascript:
+
+skin/
+|
+`--frontend/
+	|
+	`--base/
+    	|
+    	`--default/
+    		|
+    		`--js/
+    			|
+    			`--solvingmagento/
+                	|
+                	`--onestepcheckout/
+                    	|
+                    	`--classes/
