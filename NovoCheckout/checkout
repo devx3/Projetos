@@ -1,0 +1,57 @@
+Situações do Checkout
+
+	Cliente logado
+		|
+		`--> Vai direto para a etapa de escolher endereço de entrega (ou criar novo)
+
+	Cliente não logado
+		|
+		`--> Tem a opção de logar ou criar novo registro
+
+	Cliente à registrar
+		|
+		`--> É enviado para preencher as informações de cobrança e endereço de entrega
+
+	Cliente como visitante
+		|
+		`--> Preenche os campos de cobrança e entrega, porém não cria uma senha.
+
+Etapas do checkout
+
+	1. login || register
+	2. billing_information
+	3. shipping_information && shipping_method
+	4. payment_method
+	5. order_review
+
+
+Estrutura de pastas do módulo
+
+	app/
+	|
+	`--code/
+		|
+		`--local/
+			|
+			`--DevXIII/
+				|
+				`--OneStepCheckout/
+					|
+					`--Block/
+					|	|
+					|	`--Onestep/
+					|		|
+					|		`--Shipping/
+					|
+					`--controllers/
+					|
+					`--etc/
+					|
+					`--Helper/
+					|
+					`--Model/
+						|
+						`--Type/
+
+
+
