@@ -13,15 +13,15 @@ $mail = new PHPMailer;
 //$mail->SMTPDebug = 3;                               // Enable verbose debug output
 
 $mail->isSMTP();                                      // Set mailer to use SMTP
-$mail->Host = 'smtp-mail.outlook.com';  // Specify main and backup SMTP servers
+$mail->Host = 'srv44.prodns.com.br';  // Specify main and backup SMTP servers
 $mail->SMTPAuth = true;                               // Enable SMTP authentication
-$mail->Username = 'brasilluxury@outlook.com';                 // SMTP username
-$mail->Password = 'bruxariafrance84';                         // SMTP password
-$mail->SMTPSecure = 'tls';                            // Enable TLS encryption, `ssl` also accepted
+$mail->Username = 'contato@newlight.net.br';                 // SMTP username
+$mail->Password = 'newli0902';                         // SMTP password
+$mail->SMTPSecure = 'tls';                         // Enable TLS encryption, `ssl` also accepted
 $mail->Port = 587;                                    // TCP port to connect to
 
-$mail->From = 'brasilluxury@outlook.com';
-$mail->FromName = 'Brasil Luxury';
+$mail->From = 'contato@newlight.net.br';
+$mail->FromName = 'New Light';
 $mail->addAddress('erick@newdesigners.com.br', 'Erick Bruno');     // Add a recipient
 
 $mail->isHTML(true);                                  // Set email format to HTML
