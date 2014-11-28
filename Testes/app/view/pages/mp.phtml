@@ -1,0 +1,25 @@
+
+<?php
+require_once "app/external/mercado-pago/lib/mercadopago.php";
+
+$mp = new MP("2654248450580651", "zRbuCUykouswShz9zkwRfnsoqv6T82pR");
+
+$preference_data = array(
+    "items" => array(
+        array(
+            "title" => "Um produtinho bacaninha",
+            "currency_id" => "REA",
+            "category_id" => "fuck",
+            "quantity" => 1,
+            "unit_price" => 1.0
+        )
+    )
+);
+
+$preference = $mp->create_preference($preference_data);
+?>
+
+<h2>Teste do mercado pago</h2>
+<br />
+<a href="<?php echo $preference["response"]["init_point"]; ?>" name="MP-Checkout" class="orange-ar-m-sq-arall">Pague</a>
+<script type="text/javascript" src="http://mp-tools.mlstatic.com/buttons/render.js"></script>
