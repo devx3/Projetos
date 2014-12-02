@@ -1,12 +1,22 @@
+* {
+	font-family: "courier new", serif;
+	margin: 0;
+	padding: 0;
+}
 h1 {
 	font-size: 2.5em;
 }
 
-h2 {
+h2 span{
 	padding: 5px;
 	color: #FFF;
 	display: inline-block;
 	background: #3E86D0;
+	margin: 20px 0;
+	box-shadow: 2px 2px 0 #666;
+	-moz-box-shadow: 2px 2px 0 #666;
+	-o-box-shadow: 2px 2px 0 #666;
+	-webkit-box-shadow: 2px 2px 0 #666;
 }
 
 blockquote {
@@ -20,9 +30,20 @@ blockquote::before {
 }
 
 .header {
-	background: #3E86D0;
-	color:#FFFFFF;
+	margin: 20px 0; 
+	color:#000;
 	margin-bottom: 10px;
+}
+
+.header h1 span {
+	background: #3E86D0;
+	padding: 5px;
+	font-size: .9em;
+	color: #FFF;
+	box-shadow: 2px 2px 0 #666;
+	-moz-box-shadow: 2px 2px 0 #666;
+	-o-box-shadow: 2px 2px 0 #666;
+	-webkit-box-shadow: 2px 2px 0 #666;
 }
 
 .header.title {
@@ -39,6 +60,11 @@ aside {
 aside nav dl{
 	text-align: right;
 }
+
+aside nav dl dd{
+	margin: 5px 0;
+}
+
 article {
 	display: inline-block;
 	margin-left: 3em;

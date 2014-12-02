@@ -1,0 +1,14 @@
+<?php 
+
+require('layout/head.phtml');
+require('layout/header.phtml');
+require('layout/menu.phtml');
+
+if( file_exists( 'app/View/pages/'.$this->page.'.phtml' ) ):
+	require('app/View/pages/'.$this->page.'.phtml');
+else:
+	require('pages/404.phtml');
+endif;
+
+require('layout/footer.phtml');
+
