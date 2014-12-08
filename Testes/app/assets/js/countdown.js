@@ -1,6 +1,7 @@
 function Countdown()
 {
 	this.seconds = 5;
+	this.baseurl = '';
 	this.devxiii = new DevXIII();
 
 	this._init = function()
@@ -9,15 +10,18 @@ function Countdown()
 		{
 			this.stopCountdown();
 		}
-		this.devxiii.getId('count').innerHTML = this.seconds;
+		this.devxiii.getId('count').innerHTML = '<span>'+this.seconds+'</span>';
 		this.seconds = this.seconds-1;
 	}
+	this.setBaseurl = function( baseurl )
+	{
+		this.baseurl = baseurl;
+	}
 
-	
 	this.stopCountdown = function()
 	{
 		clearInterval(theInterval);
-		window.location.href = '?page=index';
+		window.location.href = this.baseurl+'index';
 	}
 
 }

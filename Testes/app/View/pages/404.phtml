@@ -5,7 +5,9 @@
 <script>
 window.onload = function()
 {
-	counter 	= new Countdown();
+	counter = new Countdown();
+	counter.setBaseurl('<?php echo BASEURL; ?>');
+	
 	theInterval = setInterval( function(){counter._init()}, 1000 );
 }
 </script>

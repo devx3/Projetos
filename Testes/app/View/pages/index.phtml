@@ -1,2 +1,192 @@
-<h2><span>It Works</span></h2>
-<blockquote>If you can see say Hello Fucking DevXIII</blockquote>
+<style type="text/css" media="screen">
+	.table-container {
+		background: #EEE;
+		width: 50%;
+		padding: 1em;
+		border: 2px solid #CCC;
+	}
+
+	.data-table {
+		width: 100%;
+		border-collapse: collapse;
+		empty-cells: show;
+	}
+
+	.data-table > caption {
+		text-align: left;
+		font-size: 24px;
+	}
+
+	.data-table tr, th, td {
+		text-align: center;
+		padding: .5em;
+	}
+	.data-table thead tr {
+		background: #3E86D0;
+	}
+
+	.data-table tbody tr:nth-child(odd) {
+		background: lightgray;
+	}
+
+	.data-table tr:hover td {
+		background: #3E86D0;
+	}
+
+	#form-container {
+		width: 100%;
+	}
+
+	#form-container {
+		padding: 1em;
+		background: #000000;
+		color: #009900;
+	}
+	
+	#command {
+		border: 0;
+		margin-top: 5px;
+		padding: 1em;
+		background: #000000;
+		color: #009900;
+	}
+	
+	#display_commands {
+		width: 99%;
+		height: 400px;
+		border: 0;
+		background: inherit;
+		color: inherit;
+		resize: none;
+		border-bottom: 1px solid #009900; 
+	}
+
+</style>
+<h2><span>System Info</span></h2>
+<?php
+$headers = explode(" ", preg_replace('/( )+/', ' ', str_replace(array('Mounted on'), array('Mounted_on'), $this -> winfiles[0])));
+$colums = explode(" ", preg_replace('/( )+/', ' ', $this -> winfiles[1]));
+?>
+
+<div class="table-container">
+	<table class="data-table">
+		<caption><h2><span>Home</span></h2></caption>
+		<thead>
+			<tr>
+				<?php foreach( $headers as $header ): ?>
+					<th><?php echo str_replace('_', ' ', $header); ?></th>
+				<?php endforeach; ?>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<?php foreach( $colums as $column ): ?>
+					<td><?php echo $column; ?></td>
+				<?php endforeach; ?>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<br />
+
+<div id="form-container">
+	<textarea readonly="true" name="display_commands" id="display_commands" placeholder="Type your linux command..." ></textarea>
+	<form name="cli_form">
+		>_<input type="text" name="command" id="command" placeholder="Command" />
+		<p><button type="submit" style="display: none" onclick="cli_exec(); return false;">Vai</button></p>
+	</form>
+</div>
+
+<script type="text/javascript" charset="utf-8">
+
+	function Ajax() {
+		
+		this.ajax = '';
+		
+		this.getAjax = function()
+		{
+			return this.ajax;
+		}
+		this.setAjax = function()
+		{
+			if( window.XMLHttpRequest ) { //IE7+, Firefox, Chrome, Opera, Safari
+				this.ajax = new XMLHttpRequest;
+			}
+			else {
+				this.ajax = new ActiveXObject("Microsoft.XMLHTTP");
+			}
+		}
+		
+	}
+
+	Ajax.prototype.openRequest = function( type, url, async )
+	{
+		this.setAjax();
+		if( this.ajax !== '' )
+		{
+			this.ajax.open( 
+				type,
+				url,
+				async
+			);	
+			return;
+		}
+		alert('Fail!');
+		
+	}
+	
+	Ajax.prototype.sendRequest = function( data ) 
+	{
+		if( this.ajax !== '' )
+		{
+			this.ajax.send();
+		}
+		
+	}
+
+	var cli_exec = function() {
+		
+		var ajax = new Ajax();
+		ajax.openRequest(
+			'POST', 
+			'<?php echo BASEURL; ?>index/cliAjax/"+document.cli_form.command.value', 
+			true
+		);
+		ajax.sendRequest();
+		console.info(ajax);
+	
+		
+		
+		/*var ajax = '';
+		var devxiii = new DevXIII();
+		
+		if( document.cli_form.command.value == 'clear' )
+		{
+			devxiii.getId('display_commands').value = '';
+			document.cli_form.command.value = '';
+			return;
+		}
+		if (window.XMLHttpRequest) {// code for IE7+, Firefox, Chrome, Opera, Safari
+			ajax = new XMLHttpRequest();
+		} else {// code for IE6, IE5
+			ajax = new ActiveXObject("Microsoft.XMLHTTP");
+		}
+		ajax.open(
+			"POST",
+			"<?php// echo BASEURL; ?>/*index/cliAjax/"+document.cli_form.command.value,
+			true
+		);
+		
+		ajax.onreadystatechange = function(){
+			if( ajax.readyState == 4 && ajax.status == 200 )
+			{
+				devxiii.getId('display_commands').value = devxiii.getId('display_commands').value + ajax.responseText;
+				document.cli_form.command.value = '';	
+			}
+		}
+		
+		ajax.send();
+		*/
+	}
+</script>
+

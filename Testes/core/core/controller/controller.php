@@ -17,6 +17,11 @@ abstract class Controller_Abstract
 	public function load()
 	{
 		$this;
-		require_once( 'app/View/'.$this->viewName.'.phtml' );
+		if( file_exists('app/View/'.$this->viewName.'.phtml') ):
+			require_once( 'app/View/'.$this->viewName.'.phtml' );
+			return true;
+		endif;
+		require_once( 'app/View/404.phtml' );
+		return false;
 	}
 }

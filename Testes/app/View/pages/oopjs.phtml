@@ -1,0 +1,80 @@
+<div id="pj_pf">
+	<h2><span>JS e OOP</span></h2>
+</div>
+
+<script type="text/javascript" charset="utf-8">
+
+function Pessoa() {
+	this.nome;
+	this.getNome = function()
+	{
+		return this.nome;
+	}
+	
+	this.setNome = function( valor )
+	{
+		this.nome = valor;
+	}
+}
+
+Pessoa.prototype.CreateButton = function(objRecipient, valor){
+	var objButton 		  = document.createElement('input');
+	objButton.value 	  = valor;
+	objButton.style.width = '150px';
+	objButton.className   = 'buttonAp';
+	objButton.type 		  = 'button';
+	
+	var self = this;
+	
+	objButton.onclick = function(){ alert(self.getNome()) }
+	objRecipient.appendChild( objButton );
+	
+}
+
+function PessoaFisica() {
+	this.cpf;
+	
+	this.getCPF = function()
+	{
+		return this.cpf;
+	}
+	
+	this.setCPF = function( cpf )
+	{
+		this.cpf = cpf;
+	}
+}
+
+function PessoaJuridica() {
+	this.cnpj;
+	
+	this.getCNPJ = function()
+	{
+		return this.cnpj;
+	}
+	
+	this.setCNPJ = function( cnpj )
+	{
+		this.cnpj = cnpj;
+	}
+}
+	
+PessoaFisica.prototype = new Pessoa();
+PessoaJuridica.prototype = new Pessoa();
+
+window.onload = function()
+{
+	oPF = new PessoaFisica();
+	oPF.setCPF('08575157990');
+	oPF.setNome('Erick Bruno');
+	
+	oPJ = new PessoaJuridica();
+	oPJ.setCNPJ('1249646464654');
+	oPJ.setNome('DevXIII LTDA');
+	
+	oPJ.CreateButton(document.getElementById('pj_pf'), 'Juridica');
+	oPF.CreateButton(document.getElementById('pj_pf'), 'Fisica');
+}
+
+
+</script>
